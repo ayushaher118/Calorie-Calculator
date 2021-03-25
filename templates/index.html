@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<div class="container create my-4">
+    <h2 class="my-4" id="new">New Item</h2>
+
+    <form method="POST" action="/">
+        <div class="mb-3">
+            <label for="product" class="form-label">Product</label>
+            <input type="text" class="form-control" name="product" id="product" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="rate" class="form-label">Rate(per 100g)</label>
+            <input type="number" class="form-control" name="rate" id="rate" aria-describedby="emailHelp">
+        </div>
+      
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+<div class="container my-4 intake">
+    <h2 class="my-4">
+        Enter Data
+    </h2>
+
+    <form action="/daily_rep" method="post">
+    <div class="mb-3">
+        <label for="product" class="form-label">Product</label>
+        <select name="product" id="product" class="form-select" aria-label="Default select example">
+            <option><a href="/">Choose Item</a></option>
+            {% for i in all_calorie_cal %}
+             <option>{{i.product}}     </option>      
+             {% endfor %}
+            </select>
+        </div>            
+        <div class="mb-3">
+            <label for="qty" class="form-label">
+                Qty.
+            </label>
+            <input type="text"class="form-control" name="qty"  id="qty"> 
+        </div>
+    <div class="mb-4">
+        <label for="rate"></label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+</div>
+
+
+{% endblock body %}
